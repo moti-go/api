@@ -5,14 +5,13 @@ const port = process.env.PORT || 3000;
 // נקודת קצה שימות המשיח יפנו אליה
 app.get('/ivr', (req, res) => {
   const phone = req.query.phone || 'לא ידוע';
-  const key = req.query.key || 'לא נלחץ';
 
-  console.log(`בקשה מ- ${phone}, הקשה: ${key}`);
+  console.log(`חיבור ממספר: ${phone}`);
 
-  // תגובת JSON לפי פורמט ימות המשיח
+  // תגובת JSON שתקריא רק את מספר המתקשר
   res.json({
     result: [
-      { type: "say", text: `שלום למספר ${phone}. לחצת על ${key}.` },
+      { type: "say", text: `שלום למספר ${phone}` },
       { type: "hangup" }
     ]
   });
